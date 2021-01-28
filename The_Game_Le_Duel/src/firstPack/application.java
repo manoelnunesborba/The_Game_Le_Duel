@@ -1,15 +1,14 @@
 package firstPack;
+
+import java.util.Stack;
+
 public class application {
 	
 	public static void init(int[] pi) {
-		System.out.print("[ ");
 
 		for(int i=0;i<pi.length;i++) {
 			pi[i]=i+1;
-			System.out.print(pi[i]);
-			System.out.print(", ");
 		}
-		System.out.println("] ");
 	}
 	public static void affichage(int[] pi) {
 		System.out.print("[ ");
@@ -36,10 +35,36 @@ public class application {
 			}
 		}
 	}
+	public static Stack<Integer> liste(int[] pioche,Stack<Integer> pioche1) {
+		
+		for(int i=0;i<pioche.length;i++) {
+			pioche1.add(pioche[i]);
+		}
+		return pioche1;
+		
+	}
+	public static Integer piocher(Stack<Integer> pioche1) {
+		return pioche1.pop();
+	}
+	public static void initialiseTable(Stack<Integer> pioche1) {
+		Stack<Integer> table = new Stack<Integer>();
+		
+	}
+
+
 	public static void main(String[] args) {
+		Stack<Integer> pioche1 = new Stack<Integer>();
+		
 		int[] Pioche = new int[60];
+		int tmp = 0;
 		init(Pioche);
 		melange(Pioche);
-		affichage(Pioche);
+		liste(Pioche, pioche1);
+		do {
+			tmp=piocher(pioche1);
+			System.out.println(tmp);
+			
+		}while(!pioche1.isEmpty());
+
 	}
 }
