@@ -1,13 +1,12 @@
 package Joueur;
 
-import java.util.Stack;
 import Table.Pioche;
 
 public class Main {
-	public int [] main;
-	public static void initialiseMain(int[] main, Stack<Integer> pioche) {		
+	public int [] main=new int[6];
+	public static void initialiseMain(int[] main, Pioche pioche) {		
 		for(int i=0;i<6;i++) {
-			main[i]=Pioche.piocher(pioche);
+			main[i]=Pioche.piocher(pioche.pioche);
 		}
 	}
 	public static int nmbCarteMain(int[] main) {

@@ -10,22 +10,22 @@ import Joueur.Main;
 
 public class Application {
 	public static void affichageTable(AttributsJoueur NORD, AttributsJoueur SUD) {
-		if(NORD.table.table.asc.peek()>=10 && NORD.table.table.desc.peek()>=10)
-			System.out.println("NORD ^[" + NORD.table.table.asc.peek() + "] v[" + NORD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
-		else if(NORD.table.table.asc.peek()<10 && NORD.table.table.desc.peek()>=10)
-			System.out.println("NORD ^[0" + NORD.table.table.asc.peek() + "] v[" + NORD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
-		else if(NORD.table.table.asc.peek()>=10 && NORD.table.table.desc.peek()<10)
-			System.out.println("NORD ^[" + NORD.table.table.asc.peek() + "] v[0" + NORD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
+		if(NORD.table.asc.peek()>=10 && NORD.table.desc.peek()>=10)
+			System.out.println("NORD ^[" + NORD.table.asc.peek() + "] v[" + NORD.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
+		else if(NORD.table.asc.peek()<10 && NORD.table.desc.peek()>=10)
+			System.out.println("NORD ^[0" + NORD.table.asc.peek() + "] v[" + NORD.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
+		else if(NORD.table.asc.peek()>=10 && NORD.table.desc.peek()<10)
+			System.out.println("NORD ^[" + NORD.table.asc.peek() + "] v[0" + NORD.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
 		else 
-			System.out.println("NORD ^[0" + NORD.table.table.asc.peek() + "] v[0" + NORD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
-		if(SUD.table.table.asc.peek()>=10 && SUD.table.table.desc.peek()>=10)
-			System.out.println("SUD  ^[" + SUD.table.table.asc.peek() + "] v[" + SUD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
-		else if(SUD.table.table.asc.peek()<10 && SUD.table.table.desc.peek()>=10)
-			System.out.println("SUD  ^[0" + SUD.table.table.asc.peek() + "] v[" + SUD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
-		else if(SUD.table.table.asc.peek()>=10 && SUD.table.table.desc.peek()<10)
-			System.out.println("SUD  ^[" + SUD.table.table.asc.peek() + "] v[0" + SUD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
+			System.out.println("NORD ^[0" + NORD.table.asc.peek() + "] v[0" + NORD.table.desc.peek() + "] m" + Main.nmbCarteMain(NORD.main.main) + "p" + NORD.pioche.nmbpioche + ")");
+		if(SUD.table.asc.peek()>=10 && SUD.table.desc.peek()>=10)
+			System.out.println("SUD  ^[" + SUD.table.asc.peek() + "] v[" + SUD.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
+		else if(SUD.table.asc.peek()<10 && SUD.table.desc.peek()>=10)
+			System.out.println("SUD  ^[0" + SUD.table.asc.peek() + "] v[" + SUD.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
+		else if(SUD.table.asc.peek()>=10 && SUD.table.desc.peek()<10)
+			System.out.println("SUD  ^[" + SUD.table.asc.peek() + "] v[0" + SUD.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
 		else
-			System.out.println("SUD ^[0" + SUD.table.table.asc.peek() + "] v[0" + SUD.table.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
+			System.out.println("SUD ^[0" + SUD.table.asc.peek() + "] v[0" + SUD.table.desc.peek() + "] m" + Main.nmbCarteMain(SUD.main.main) + "p" + SUD.pioche.nmbpioche + ")");
 	}
 	
 	
@@ -37,15 +37,15 @@ public class Application {
 		boolean victoire;
 		Pioche.init(Pioch);
 		Pioche.melange(Pioch);		
-		AttributsJoueur.initialiseJoueur(Joueur1, Pioch);
+		AttributsJoueur.initialiseAttributsJoueur(Joueur1, Pioch);
 		Pioche.melange(Pioch);
-		AttributsJoueur.initialiseJoueur(Joueur2, Pioch);		
+		AttributsJoueur.initialiseAttributsJoueur(Joueur2, Pioch);		
 		do {
 			affichageTable(Joueur1, Joueur2);
 			if(j) {
 				System.out.print("cartes NORD ");
 				Pioche.affichage(Joueur1.main.main);
-				if(Jeu.ConditionDefaite(Joueur1, Joueur2.table.table)) {
+				if(Jeu.ConditionDefaite(Joueur1, Joueur2.table)) {
 					victoire=false;
 					break;
 				}
@@ -59,7 +59,7 @@ public class Application {
 			else {
 				System.out.print("cartes SUD ");
 				Pioche.affichage(Joueur2.main.main);
-				if(Jeu.ConditionDefaite(Joueur2, Joueur1.table.table)) {
+				if(Jeu.ConditionDefaite(Joueur2, Joueur1.table)) {
 					victoire=true;
 					break;
 				};

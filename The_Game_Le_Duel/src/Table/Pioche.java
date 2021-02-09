@@ -3,7 +3,7 @@ package Table;
 import java.util.Stack;
 
 public class Pioche {
-	public Stack<Integer> pioche;
+	public Stack<Integer> pioche = new Stack<Integer>();
 	public int nmbpioche;
 	public static void init(int[] pi) {
 
@@ -26,16 +26,17 @@ public class Pioche {
 			}
 		}
 	}
-	public static Stack<Integer> liste(int[] pioche,Stack<Integer> pioche1) {
+	public static Stack<Integer> liste(int[] pioche,Stack<Integer> pioche2) {
 		
 		for(int i=0;i<pioche.length;i++) {
-			pioche1.add(pioche[i]);
+			pioche2.add(pioche[i]);
+			
 		}
-		return pioche1;
+		return pioche2;
 		
 	}
-	public static Integer piocher(Stack<Integer> pioche1) {
-		return pioche1.pop();
+	public static Integer piocher(Stack<Integer> pioche2) {
+		return pioche2.pop();
 	}
 	public static void affichage(int[] pi) {
 		System.out.print("{ ");

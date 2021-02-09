@@ -7,12 +7,11 @@ import Joueur.Main;
 
 
 public class Jeu {
-	public Table table;
 	public static int CarteJouable(AttributsJoueur joueur, Table opposé) {
 		int retour = 0;
 		boolean inv = true;
 		for (int i = 0; i<6; i++) {
-			if(joueur.main.main[i]!=0 && (joueur.main.main[i]<joueur.table.table.desc.peek() || joueur.main.main[i]>joueur.table.table.asc.peek())) {
+			if(joueur.main.main[i]!=0 && (joueur.main.main[i]<joueur.table.desc.peek() || joueur.main.main[i]>joueur.table.asc.peek())) {
 				retour += 1;
 			}
 			else if (joueur.main.main[i]!=0 && inv && (joueur.main.main[i]>opposé.desc.peek() || joueur.main.main[i]<opposé.asc.peek())) {
