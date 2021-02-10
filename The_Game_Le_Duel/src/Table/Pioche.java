@@ -41,7 +41,7 @@ public class Pioche {
 	public static void affichage(int[] pi) {
 		System.out.print("{ ");
 
-		for(int i=0;i<pi.length;i++) {			
+		for(int i=0;i<pi.length;i++) {
 			if(pi[i]!=0) {
 				if(pi[i]<10)
 					System.out.print("0");

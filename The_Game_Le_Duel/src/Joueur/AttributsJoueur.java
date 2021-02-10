@@ -216,7 +216,7 @@ public class AttributsJoueur {
 				if (nmb>AttributsJoueur1.pioche.nmbpioche)nmb= AttributsJoueur1.pioche.nmbpioche;
 				for(int i=0;i<2;i++) {	
 					if(AttributsJoueur1.pioche.nmbpioche==0) break;
-					AttributsJoueur1.main.main[Main.premiervide(AttributsJoueur1.main.main)]=piocher(AttributsJoueur1.pioche.pioche);
+					AttributsJoueur1.main.main[Main.premiervide(AttributsJoueur1.main.main)]=Pioche.piocher(AttributsJoueur1.pioche.pioche);
 					AttributsJoueur1.pioche.nmbpioche-=1;
 				}
 				System.out.println(nmbdefausse + " cartes posées, " + nmb + " cartes piochées");
@@ -226,7 +226,7 @@ public class AttributsJoueur {
 				if (nmb>AttributsJoueur1.pioche.nmbpioche)nmb= AttributsJoueur1.pioche.nmbpioche;
 				for(int i=0;i<nmb;i++) {	
 					if(AttributsJoueur1.pioche.nmbpioche==0) break;
-					AttributsJoueur1.main.main[Main.premiervide(AttributsJoueur1.main.main)]=piocher(AttributsJoueur1.pioche.pioche);
+					AttributsJoueur1.main.main[Main.premiervide(AttributsJoueur1.main.main)]=Pioche.piocher(AttributsJoueur1.pioche.pioche);
 					AttributsJoueur1.pioche.nmbpioche-=1;					
 				}
 				System.out.println(nmbdefausse + " cartes posées, " + nmb + " cartes piochées");
@@ -240,8 +240,5 @@ public class AttributsJoueur {
 			poserCarte1(AttributsJoueur1, AttributsJoueur2);
 		}
 	}
-	private static int piocher(Stack<Integer> pioche2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 }
