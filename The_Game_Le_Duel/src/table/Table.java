@@ -1,4 +1,4 @@
-package Table;
+package table;
 import java.util.Stack;
 
 
@@ -19,7 +19,7 @@ public class Table {
 		table.cartedesc=0;
 	}
 	
-	public static boolean Verifpose (int nombre, Table table, boolean asc) {
+	public static boolean Verifpose (int nombre, Table table, boolean asc) { /**/
 		
 		if (asc) {
 			int nombreverif = table.asc.peek();
@@ -36,7 +36,7 @@ public class Table {
 		}
 		return false;
 	}
-	public static boolean VerifposeInv (int nombre, Table table, boolean asc) {		
+	public static boolean VerifposeInv (int nombre, Table table, boolean asc) {		/**/
 	if (asc) {			
 		int nombreverif = table.asc.peek();			
 		if(nombre<nombreverif) {				
@@ -50,11 +50,11 @@ public class Table {
 	}
 	return false;
 }
-	public static void Valider (Table table) {
+	public static void Valider (Table table) { /**/
 		table.carteasc=0;
 		table.cartedesc=0;
 	}
-	public static void enlevercarte (Table table) {
+	public static void enlevercarte (Table table) { /**/
 		for(int i=0; i < table.carteasc; i++) {
 			Pioche.piocher(table.asc);
 		}

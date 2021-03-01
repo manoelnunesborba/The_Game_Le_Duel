@@ -1,18 +1,36 @@
-package Joueur;
+package joueur;
 
 import java.io.IOException;
 import java.util.Stack;
 
-import Table.Jeu;
-import Table.Pioche;
-import Table.Table;
+import table.Jeu;
+import table.Pioche;
+import table.Table;
 
 
-@SuppressWarnings("unused")
+
 public class AttributsJoueur {
-	public Pioche pioche;
-	public Table table;
-	public Main main;
+	private Pioche pioche;
+	private Table table;
+	private Main main;
+	public static int piochenbr(AttributsJoueur AttributsJoueur) {
+		return AttributsJoueur.pioche.nmbpioche;
+	}
+	public static int tableasc(AttributsJoueur AttributsJoueur) {
+		return AttributsJoueur.table.asc.peek();
+	}
+	public static int tabledesc(AttributsJoueur AttributsJoueur) {
+		return AttributsJoueur.table.desc.peek();
+	}
+	public static Table table(AttributsJoueur AttributsJoueur) {
+		return AttributsJoueur.table;
+	}
+	public static int[] main(AttributsJoueur AttributsJoueur) {
+		return AttributsJoueur.main.main;
+	}
+	public static int main(AttributsJoueur AttributsJoueur, int i) {
+		return AttributsJoueur.main.main[i];
+	}
 	public static void initialiseAttributsJoueur(AttributsJoueur AttributsJoueur, int[] pioche) {
 		AttributsJoueur.table = new Table();
 		AttributsJoueur.pioche = new Pioche();
@@ -22,7 +40,7 @@ public class AttributsJoueur {
 		Pioche.liste(pioche, AttributsJoueur.pioche.pioche);
 		Main.initialiseMain(AttributsJoueur.main.main, AttributsJoueur.pioche);
 	}
-	public static String chaine() throws IOException{
+	private static String chaine() throws IOException{
 	    String tmp = "";
 	    char C='\0';		
 			while ((C=(char) System.in.read()) !='\n')
@@ -33,7 +51,7 @@ public class AttributsJoueur {
 				
 		return tmp;
     } 
-	public static boolean poserCarteAttributsJoueur(int nombre, boolean asc, AttributsJoueur AttributsJoueur) {		
+	private static boolean poserCarteAttributsJoueur(int nombre, boolean asc, AttributsJoueur AttributsJoueur) {		
 		if(!Table.Verifpose(nombre, AttributsJoueur.table, asc)) {			
 			return false;
 		}		
@@ -46,7 +64,7 @@ public class AttributsJoueur {
 		AttributsJoueur.table.cartedesc += 1;
 		return true;
 	}
-	public static boolean poserCarteAttributsJoueurInv(int nombre, boolean asc, AttributsJoueur AttributsJoueur) {
+	private static boolean poserCarteAttributsJoueurInv(int nombre, boolean asc, AttributsJoueur AttributsJoueur) {
 		
 		if(!Table.VerifposeInv(nombre, AttributsJoueur.table, asc)) {			
 			return false;
@@ -100,10 +118,10 @@ public class AttributsJoueur {
 			if (j==3) {
 				if(Jeu.VerifEsp (ligne.charAt(i))|| Jeu.VerifInv (ligne.charAt(i))) {					
 					if(Jeu.VerifEsp(ligne.charAt(i))) {						
-						if(Main.VerifMain(nombre, AttributsJoueur1.main.main)) {	
-							if(!defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)]) {
+						if(VerifMain(nombre, AttributsJoueur1.main.main)) {	
+							if(!defausse[defausseCarte(nombre, AttributsJoueur1.main.main)]) {
 								nmbdefausse += 1;
-								defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
+								defausse[defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
 							}
 							else {
 								fct=false;
@@ -127,10 +145,10 @@ public class AttributsJoueur {
 			}
 			if (j==4) {				
 				if(Jeu.VerifEsp(ligne.charAt(i))) {
-					if(Main.VerifMain(nombre, AttributsJoueur1.main.main)) {
-						if(!defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)]) {
+					if(VerifMain(nombre, AttributsJoueur1.main.main)) {
+						if(!defausse[defausseCarte(nombre, AttributsJoueur1.main.main)]) {
 							nmbdefausse += 1;
-							defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
+							defausse[defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
 						}
 						else {
 							fct=false;
@@ -161,11 +179,12 @@ public class AttributsJoueur {
 			if(!fct) break;
 			j++;
 		}
+		if (j<3)fct=false;
 		if (j==3) {									
-					if(Main.VerifMain(nombre, AttributsJoueur1.main.main)) {	
-						if(!defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)] && nmbdefausse > 0) {
+					if(VerifMain(nombre, AttributsJoueur1.main.main)) {	
+						if(!defausse[defausseCarte(nombre, AttributsJoueur1.main.main)] && nmbdefausse > 0) {
 							nmbdefausse += 1;
-							defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
+							defausse[defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
 							fct=poserCarteAttributsJoueur(nombre, asc, AttributsJoueur1);							
 							j=0;
 						}
@@ -182,11 +201,11 @@ public class AttributsJoueur {
 		}
 		if (j==4) {	
 			
-				if(Main.VerifMain(nombre, AttributsJoueur1.main.main)) {
+				if(VerifMain(nombre, AttributsJoueur1.main.main)) {
 					if(inv) {
-						if(!defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)] && nmbdefausse > 0) {
+						if(!defausse[defausseCarte(nombre, AttributsJoueur1.main.main)] && nmbdefausse > 0) {
 							nmbdefausse += 1;
-							defausse[Main.defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
+							defausse[defausseCarte(nombre, AttributsJoueur1.main.main)]=true;
 							fct=poserCarteAttributsJoueurInv(nombre, asc, AttributsJoueur2);
 							inv=false;
 							j=0;	
@@ -216,7 +235,7 @@ public class AttributsJoueur {
 				if (nmb>AttributsJoueur1.pioche.nmbpioche)nmb= AttributsJoueur1.pioche.nmbpioche;
 				for(int i=0;i<2;i++) {	
 					if(AttributsJoueur1.pioche.nmbpioche==0) break;
-					AttributsJoueur1.main.main[Main.premiervide(AttributsJoueur1.main.main)]=Pioche.piocher(AttributsJoueur1.pioche.pioche);
+					AttributsJoueur1.main.main[premiervide(AttributsJoueur1.main.main)]=Pioche.piocher(AttributsJoueur1.pioche.pioche);
 					AttributsJoueur1.pioche.nmbpioche-=1;
 				}
 				System.out.println(nmbdefausse + " cartes posées, " + nmb + " cartes piochées");
@@ -226,7 +245,7 @@ public class AttributsJoueur {
 				if (nmb>AttributsJoueur1.pioche.nmbpioche)nmb= AttributsJoueur1.pioche.nmbpioche;
 				for(int i=0;i<nmb;i++) {	
 					if(AttributsJoueur1.pioche.nmbpioche==0) break;
-					AttributsJoueur1.main.main[Main.premiervide(AttributsJoueur1.main.main)]=Pioche.piocher(AttributsJoueur1.pioche.pioche);
+					AttributsJoueur1.main.main[premiervide(AttributsJoueur1.main.main)]=Pioche.piocher(AttributsJoueur1.pioche.pioche);
 					AttributsJoueur1.pioche.nmbpioche-=1;					
 				}
 				System.out.println(nmbdefausse + " cartes posées, " + nmb + " cartes piochées");
@@ -240,5 +259,25 @@ public class AttributsJoueur {
 			poserCarte1(AttributsJoueur1, AttributsJoueur2);
 		}
 	}
-
+	private static int premiervide(int[] main) { /*peut être*/
+		for(int i=0;i<main.length;i++) {
+			if(main[i]==0)
+				return i;
+		}
+		return 7;
+	}
+	private static boolean VerifMain (int nombre, int[] main) { /**/
+		if (nombre==0) return false;
+		for(int i=0; i<6; i++) {
+			if(nombre==main[i])
+				return true;
+		}
+		return false;
+	}
+	private static int defausseCarte(int nombre, int[] main) {
+		for(int i=0;i<6;i++)
+			if(nombre==main[i])
+				return i;
+		return 7;
+	}
 }

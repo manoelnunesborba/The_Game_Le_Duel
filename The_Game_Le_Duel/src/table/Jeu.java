@@ -1,8 +1,8 @@
-package Table;
+package table;
 
 
-import Joueur.AttributsJoueur;
-import Joueur.Main;
+import joueur.AttributsJoueur;
+import joueur.Main;
 
 
 
@@ -11,10 +11,10 @@ public class Jeu {
 		int retour = 0;
 		boolean inv = true;
 		for (int i = 0; i<6; i++) {
-			if(joueur.main.main[i]!=0 && (joueur.main.main[i]<joueur.table.desc.peek() || joueur.main.main[i]>joueur.table.asc.peek())) {
+			if(AttributsJoueur.main(joueur,i)!=0 && (AttributsJoueur.main(joueur,i)<AttributsJoueur.tabledesc(joueur) || AttributsJoueur.main(joueur,i)>AttributsJoueur.tabledesc(joueur))) {
 				retour += 1;
 			}
-			else if (joueur.main.main[i]!=0 && inv && (joueur.main.main[i]>opposé.desc.peek() || joueur.main.main[i]<opposé.asc.peek())) {
+			else if (AttributsJoueur.main(joueur,i)!=0 && inv && (AttributsJoueur.main(joueur,i)>opposé.desc.peek() || AttributsJoueur.main(joueur,i)<opposé.asc.peek())) {
 				inv=false;
 				retour += 1;
 			}
@@ -23,7 +23,7 @@ public class Jeu {
 		
 	}
 	public static boolean ConditionDefaite(AttributsJoueur joueur, Table opposé) {
-		int nmbCarte = Main.nmbCarteMain(joueur.main.main);
+		int nmbCarte = Main.nmbCarteMain(AttributsJoueur.main(joueur));
 		int jouable = 0;
 		if (nmbCarte==1) return true;
 		jouable += CarteJouable(joueur, opposé);
@@ -32,7 +32,7 @@ public class Jeu {
 	}
 	
 	public static boolean ConditionVictoire(AttributsJoueur joueur) { /*Et la pioche vide ?*/
-		if(Main.nmbCarteMain(joueur.main.main)==0) return true;
+		if(Main.nmbCarteMain(AttributsJoueur.main(joueur))==0) return true;
 		return false;
 	}
 	

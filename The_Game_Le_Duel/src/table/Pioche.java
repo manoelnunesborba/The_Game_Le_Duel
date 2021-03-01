@@ -1,5 +1,6 @@
-package Table;
+package table;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Pioche {
@@ -10,8 +11,11 @@ public class Pioche {
 		for(int i=0;i<pi.length;i++) {
 			pi[i]=i+2;
 		}
+		melange(pi);
 	}
-	public static void melange(int[] pi) {
+
+
+	private static void melange(int[] pi) {
 		for(int i=pi.length-1;i>=1;i--) {		
 			int hasard=(int) Math.floor(Math.random()*(i+1));
 			int tmp=pi[i];
@@ -39,6 +43,7 @@ public class Pioche {
 		return pioche2.pop();
 	}
 	public static void affichage(int[] pi) {
+		Arrays.sort(pi);
 		System.out.print("{ ");
 
 		for(int i=0;i<pi.length;i++) {
