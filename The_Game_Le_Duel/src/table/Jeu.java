@@ -7,6 +7,13 @@ import joueur.Main;
 
 
 public class Jeu {
+	
+	/**
+	  * @brief Vérifie si une carte est jouable
+	  * @param[in] joueur : le joueur à être vérifié
+	  * @param[in] table : la table à être examiné
+	  * @return true et false
+	  */
 	public static int CarteJouable(AttributsJoueur joueur, Table opposé) {
 		int retour = 0;
 		boolean inv = true;
@@ -14,7 +21,7 @@ public class Jeu {
 			if(AttributsJoueur.main(joueur,i)!=0 && (AttributsJoueur.main(joueur,i)<AttributsJoueur.tabledesc(joueur) || AttributsJoueur.main(joueur,i)>AttributsJoueur.tabledesc(joueur))) {
 				retour += 1;
 			}
-			else if (AttributsJoueur.main(joueur,i)!=0 && inv && (AttributsJoueur.main(joueur,i)>opposé.desc.peek() || AttributsJoueur.main(joueur,i)<opposé.asc.peek())) {
+			else if (AttributsJoueur.main(joueur,i)!=0 && inv && (AttributsJoueur.main(joueur,i)>opposé.descpeek() || AttributsJoueur.main(joueur,i)<opposé.ascpeek())) {
 				inv=false;
 				retour += 1;
 			}
@@ -22,6 +29,13 @@ public class Jeu {
 		return retour;
 		
 	}
+	
+	/**
+	  * @brief Vérifie la condition de défaite (Joueur qui ne peut pas jouer)
+	  * @param[in] joueur : le joueur à être vérifié
+	  * @param[in] table : la table à être examiné
+	  * @return true et false
+	  */
 	public static boolean ConditionDefaite(AttributsJoueur joueur, Table opposé) {
 		int nmbCarte = Main.nmbCarteMain(AttributsJoueur.main(joueur));
 		int jouable = 0;
@@ -31,34 +45,16 @@ public class Jeu {
 		return true;
 	}
 	
-	public static boolean ConditionVictoire(AttributsJoueur joueur) { /*Et la pioche vide ?*/
+	
+	/**
+	  * @brief Vérifie la condition de victoire 
+	  * @param[in] joueur : le joueur à être vérifié
+	  * @return true et false
+	  */
+	public static boolean ConditionVictoire(AttributsJoueur joueur) { 
 		if(Main.nmbCarteMain(AttributsJoueur.main(joueur))==0) return true;
 		return false;
 	}
 	
-	/*Verif des ASCII*/
-	public static boolean VerifAsc (char signe) {
-		if (signe == 94 || signe == 118)
-			return true;
-		return false;
-	}
-	
-	public static boolean VerifNmb (char signe) {
-		if (signe > 47 && signe < 58)
-			return true;
-		return false;
-	}
-	
-	public static boolean VerifEsp (char signe) {
-		if (signe == 32)
-			return true;
-		return false;
-	}
-	
-	public static boolean VerifInv (char signe) {		
-		if (signe == 39) {			
-			return true;			
-			}
-		return false;
-	}
+
 }
